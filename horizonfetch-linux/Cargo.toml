@@ -1,0 +1,18 @@
+[package]
+name = "horizonfetch"
+version = "0.3.5-2"
+edition = "2021"
+
+[profile.release]
+strip = "symbols"
+lto = true
+debug = false
+panic = "abort"
+
+[dependencies]
+crossterm = "0.29.0"
+sysinfo = "0.33"
+nix = { version = "0.29", features = ["user", "process"] }
+once_cell = "1.15.0"
+strip-ansi-escapes = "0.2.1"
+dirs = "5.0"

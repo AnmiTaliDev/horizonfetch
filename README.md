@@ -14,22 +14,52 @@
 </div>
 
 ## Installation
-### Windows: 
- - [`winget`](https://github.com/microsoft/winget-pkgs/tree/ed987f873472e10012a9aafcdd4ee2bfea848ef7/manifests/h/Horizon/Horizonfetch/0.35-2):
-`winget install horizonfetch`
- - Alternatively, you can download an archive file from the [Releases](https://github.com/horizonl1nux/horizonfetch/releases) tab.
 
-### Linux:
-- Soon
+### Linux
 
-## 👾Build from source
-```
-download rustup
-cd horizonfetch-win
+#### Build from source
+```bash
+git clone https://github.com/horizonl1nux/horizonfetch.git
+cd horizonfetch/horizonfetch-linux
 cargo build --release
 ```
-⚠️ If you build the application yourself, it may require the **Microsoft Visual C++ Redistributable** to run.  
-> For a smoother experience, we recommend downloading the prebuilt archive from the [Releases](https://github.com/horizonl1nux/horizonfetch/releases) tab, as it doesn't require installing the Microsoft Visual C++ Redistributable or any additional runtime dependencies.
+
+The compiled binary will be located at `target/release/horizonfetch`.
+
+#### Install
+```bash
+# Copy to local bin
+sudo cp target/release/horizonfetch /usr/local/bin/
+
+# Or install for current user only
+mkdir -p ~/.local/bin
+cp target/release/horizonfetch ~/.local/bin/
+```
+
+### Windows
+- [`winget`](https://github.com/microsoft/winget-pkgs/tree/ed987f873472e10012a9aafcdd4ee2bfea848ef7/manifests/h/Horizon/Horizonfetch/0.35-2):
+  ```
+  winget install horizonfetch
+  ```
+- Alternatively, download from the [Releases](https://github.com/horizonl1nux/horizonfetch/releases) tab
+
+## Configuration
+
+HorizonFetch can be customized via a configuration file.
+
+### Linux
+Create `~/.config/horizonfetch/hf.conf`:
+```bash
+mkdir -p ~/.config/horizonfetch
+cp horizonfetch-linux/hf.conf ~/.config/horizonfetch/
+```
+
+Edit the file to customize colors, ASCII art, and which information to display.
+
+### Windows
+The configuration file is located at `%USERPROFILE%\horizonfetch\hf.config`.
+
+See the example config files in `horizonfetch-linux/hf.conf` (Linux) or `horizonfetch-win/hf.conf` (Windows) for all available options.
 ## Running the Application
 
 You can launch `horizonfetch` in several convenient ways:
