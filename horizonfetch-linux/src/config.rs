@@ -1,15 +1,16 @@
+// Config module
+// AnmiTaliDev <anmitalidev@nuros.org>
+
 use std::{fs, io};
 
 const DEFAULT_ASCII: &str = r#"
-
-
-  1111111  1111111
-  1111111  1111111
-  1111111  1111111
-ㅤ
-  1111111  1111111
-  1111111  1111111
-  1111111  11111;.
+       ___
+      (.. \
+      (<> |
+     / __  \
+    ( /  \ /|
+   _/\ __)/_)
+   \/-____\/
 "#;
 
 #[derive(Debug, Clone)]
@@ -31,6 +32,7 @@ pub struct Config {
     pub show_swap: bool,
     pub show_locale: bool,
     pub show_disk: bool,
+    #[allow(dead_code)]
     pub show_ram_ext_info: bool,
     pub show_color_scheme: bool,
 }

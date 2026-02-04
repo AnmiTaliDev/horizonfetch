@@ -1,5 +1,5 @@
 // HorizonFetch Linux Edition
-// Modular system information fetch tool
+// AnmiTaliDev <anmitalidev@nuros.org>
 
 mod config;
 mod display;

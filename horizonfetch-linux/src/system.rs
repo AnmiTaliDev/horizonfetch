@@ -1,3 +1,6 @@
+// System information gathering
+// AnmiTaliDev <anmitalidev@nuros.org>
+
 use std::fs;
 use sysinfo::{Disks, System};
 

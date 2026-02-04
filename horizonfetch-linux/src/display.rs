@@ -1,3 +1,6 @@
+// Display rendering
+// AnmiTaliDev <anmitalidev@nuros.org>
+
 use crate::config::{is_valid_ansi_code, Config};
 use crate::system::SystemInfo;
 use crossterm::{
@@ -53,16 +56,14 @@ impl Display {
         let art_width = max_art_line_len + 3;
         let mut y = 0;
 
-        for line in ascii_lines {
+        for line in &ascii_lines {
             let trimmed_line = line.trim_end();
-            if !trimmed_line.is_empty() {
-                execute!(
-                    stdout(),
-                    MoveTo(0, y),
-                    Print(format!("\x1b[{}m{}\x1b[0m", color, trimmed_line))
-                )?;
-                y += 1;
-            }
+            execute!(
+                stdout(),
+                MoveTo(0, y),
+                Print(format!("\x1b[{}m{}\x1b[0m", color, trimmed_line))
+            )?;
+            y += 1;
         }
 
         // Render system info
@@ -88,14 +89,8 @@ impl Display {
         }
 
         if self.config.show_os {
-            self.print_line(
-                art_width,
-                info_y,
-                title_color,
-                "OS:",
-                info_color,
-                &self.info.os_name,
-            )?;
+            let os_info = format!("{} {}", self.info.os_name, self.info.kernel);
+            self.print_line(art_width, info_y, title_color, "OS:", info_color, &os_info)?;
             info_y += 1;
         }
 
